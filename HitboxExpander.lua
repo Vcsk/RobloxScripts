@@ -188,7 +188,7 @@ getgenv().outlinecolor = Color3.new(1, 1, 1) --Change outline color, no need to 
 getgenv().filltrans = 0.5 --Change fill transparency
 getgenv().outlinetrans = 0.5 --Change outline transparency
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/Scripts/main/Highligh-ESP.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/Highlight-ESP.lua"))()
 end)
 
 VisualTab:Toggle("(Everyone) ESP Name", function(state)
