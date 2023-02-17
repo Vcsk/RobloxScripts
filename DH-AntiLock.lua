@@ -62,7 +62,7 @@ main:Toggle("Desync", function(s)
 	end)
 end)
 
-others:Section("Aim Viewer + Anti Lock")
+others:Section("Aim Viewer")
 
 others:Toggle("Toggle", function(s)
 _G.enable = s
