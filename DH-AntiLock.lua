@@ -58,3 +58,5 @@ main:Toggle("Desync", function(s)
         end 
 	end)
 end)
+
+main:Warning("If they use anti lock resolver then the anti lock not gonna work cuz i don't know how to bypass it")
