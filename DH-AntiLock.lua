@@ -74,3 +74,6 @@ _G.method = "MousePos" --had a stroke sotkraakdakdakdkadkadkakdakdakdkdakdakdkad
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/DaHood/AimViewerSC.lua"))()
 end)
+
+others:InfoLabel("l - enable tracer and disable")
+others:InfoLabel("t - press t and u will see a noti on the user ur tracer is on")
