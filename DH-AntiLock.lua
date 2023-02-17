@@ -2,8 +2,9 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/
 local window = library:Create("DH - Anti Lock")
 
 local main = window:Tab("Main","rbxassetid://10888331510")
+local others = window:Tab("Others","rbxassetid://12518571678")
 
-main:WarningLabel("If they use anti lock resolver then the anti lock not gonna work reeeeeeeeeeeee eeeeeee")
+main:WarningLabel("If they use anti lock resolver then the anti lock not gonna work reeeeeeeeeeeee eeeeeeeeee eeeeeeeer")
 
 main:Toggle("Underground", function(s)
 	-- Credits to Halal Gaming
@@ -59,4 +60,17 @@ main:Toggle("Desync", function(s)
           lplr.Character.HumanoidRootPart.Velocity = lvle 
         end 
 	end)
+end)
+
+others:Section("Aim Viewer + Anti Lock")
+
+others:Toggle("Toggle", function(s)
+_G.enable = s
+_G.color = Color3.fromRGB(255,0,0)
+_G.toggle_keybind = "l" -- enable tracer and disable
+_G.swith_nigga = 't' -- press t and u will see a noti on the user ur tracer is on 
+_G.method = "MousePos" --had a stroke sotkraakdakdakdkadkadkakdakdakdkdakdakdkadkadka
+-- ANTI KEYBIND IS Z
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/DaHood/AimViewerSC.lua"))()
 end)
