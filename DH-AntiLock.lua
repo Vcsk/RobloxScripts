@@ -62,8 +62,8 @@ end)
 
 others:Section("Aim Viewer")
 
-others:Toggle("Toggle", function(s)
-_G.enable = s
+others:Button("Aim Viewer", function()
+_G.enable = false
 _G.color = Color3.fromRGB(255,0,0)
 _G.toggle_keybind = "l" -- enable tracer and disable
 _G.swith_nigga = 't' -- press t and u will see a noti on the user ur tracer is on 
