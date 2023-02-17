@@ -4,7 +4,7 @@ local window = library:Create("DH - Anti Lock")
 local main = window:Tab("Main","rbxassetid://10888331510")
 local others = window:Tab("Others","rbxassetid://12518571678")
 
-main:WarningLabel("If they use anti lock resolver then the anti lock not gonna work reeeeeeeeeeeee eeeeeeeeee eeeeeeeer")
+main:WarningLabel("If they use anti lock resolver then the anti lock not gonna work reeeeeeeeeeeee eeeeeeeeee")
 
 main:Toggle("Underground", function(s)
 	-- Credits to Halal Gaming
