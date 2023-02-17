@@ -4,8 +4,6 @@ local window = library:Create("DH - Anti Lock")
 local main = window:Tab("Main","rbxassetid://10888331510")
 local others = window:Tab("Others","rbxassetid://12518571678")
 
-main:WarningLabel("If they use anti lock resolver then the anti lock not gonna work reeeeeeeeeeeee eeeeeeeeee")
-
 main:Toggle("Underground", function(s)
 	-- Credits to Halal Gaming
 	getgenv().Underground = s
@@ -76,5 +74,5 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/ma
 end)
 
 others:InfoLabel("l - enable tracer and disable")
-others:InfoLabel("t - press t and u will see a noti on the user ur tracer is on ;abc123 abc123333333")
+others:InfoLabel("t - u will see a noti on the user ur tracer is on")
 others:InfoLabel("z - anti lock")
