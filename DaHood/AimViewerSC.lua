@@ -142,6 +142,7 @@ function sendnotifi(message)
     end
 --Notify
 -------------------------------------------------
+if getgenv().antilockenabled == true then
     UIS.InputBegan:Connect(function(input)
         if input.KeyCode == Enum.KeyCode.Z then
             if VelocityChanger == false then
@@ -183,3 +184,4 @@ if not (UIS:GetFocusedTextBox()) then
         end
     end
 end)
+end
