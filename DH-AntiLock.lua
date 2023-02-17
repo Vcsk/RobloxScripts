@@ -3,6 +3,8 @@ local window = library:Create("DH - Anti Lock")
 
 local main = window:Tab("Main","rbxassetid://10888331510")
 
+main:WarningLabel("If they use anti lock resolver then the anti lock not gonna work reeeeeeeeeeeee eeeeeee")
+
 main:Toggle("Underground", function(s)
 	-- Credits to Halal Gaming
 	getgenv().Underground = s
@@ -58,5 +60,3 @@ main:Toggle("Desync", function(s)
         end 
 	end)
 end)
-
-main:WarningLabel("If they use anti lock resolver then the anti lock not gonna work........")
