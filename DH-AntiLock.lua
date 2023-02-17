@@ -76,4 +76,5 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/ma
 end)
 
 others:InfoLabel("l - enable tracer and disable")
-others:InfoLabel("t - press t and u will see a noti on the user ur tracer is on reeeeeeeeeee reeeeeeeeee rrr")
+others:InfoLabel("t - press t and u will see a noti on the user ur tracer is on ;abc123 abc123333333")
+others:InfoLabel("z - anti lock")
