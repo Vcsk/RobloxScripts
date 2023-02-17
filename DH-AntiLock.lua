@@ -59,4 +59,4 @@ main:Toggle("Desync", function(s)
 	end)
 end)
 
-main:WarningLabel("If they use anti lock resolver then the anti lock not gonna work cuz i don't know how to bypass it")
+main:WarningLabel("If they use anti lock resolver then the anti lock not gonna work")
