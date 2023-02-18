@@ -142,7 +142,7 @@ function sendnotifi(message)
     end
 --Notify
 -------------------------------------------------
-if getgenv().antilockenabled == true then
+if _G.antilockenabled == true then
     UIS.InputBegan:Connect(function(input)
         if input.KeyCode == Enum.KeyCode.Z then
             if VelocityChanger == false then
