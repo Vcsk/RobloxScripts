@@ -75,3 +75,22 @@ end)
 
 others:InfoLabel("l - enable tracer and disable")
 others:InfoLabel("t - u will see a noti on the user ur tracer is on")
+
+others:Section("Locks")
+
+others:Toggle("Anti Lock Resolver", function(s)
+local RunService = game:GetService("RunService")
+RunService.Heartbeat:Connect(function()
+if s == true then
+   pcall(function()
+       for i,v in pairs(game.Players:GetChildren()) do
+           if v.Name ~= game.Players.LocalPlayer.Name then
+               local hrp = v.Character.HumanoidRootPart
+               hrp.Velocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)    
+               hrp.AssemblyLinearVelocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)  
+           end
+       end
+   end)
+end)
+end
+end)
