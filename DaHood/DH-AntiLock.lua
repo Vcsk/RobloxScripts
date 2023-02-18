@@ -377,9 +377,9 @@ getgenv().sakeybind = keycode
 end)
 
 others:Toggle("Anti Lock Resolver", function(s)
-local RunService = game:GetService("RunService")
-RunService.Heartbeat:Connect(function()
-if s == true then
+getgenv().alrpro = s
+game:GetService("RunService").Heartbeat:Connect(function()
+if alrpro == true then
    pcall(function()
        for i,v in pairs(game.Players:GetChildren()) do
            if v.Name ~= game.Players.LocalPlayer.Name then
