@@ -378,17 +378,16 @@ end)
 
 others:Toggle("Anti Lock Resolver", function(s)
 getgenv().alrpro = s
-game:GetService("RunService").Heartbeat:Connect(function()
+local Y = -0
+game:GetService("RunService").RenderStepped:Connect(function()
 if alrpro == true then
-   pcall(function()
-       for i,v in pairs(game.Players:GetChildren()) do
-           if v.Name ~= game.Players.LocalPlayer.Name then
-               local hrp = v.Character.HumanoidRootPart
-               hrp.Velocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)    
-               hrp.AssemblyLinearVelocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)  
-           end
-       end
-   end)
+    for i,v in pairs(game.Players:GetPlayers()) do
+        Target = v.Name 
+        if Target ~= game.Players.LocalPlayer.Name then
+        old_vel = game.Players[Target].Character.HumanoidRootPart.Velocity
+        game.Players[Target].Character.HumanoidRootPart.Velocity = Vector3.new(old_vel.X, Y, old_vel.Z)
+    end
+    end
 end
 end)
 end)
