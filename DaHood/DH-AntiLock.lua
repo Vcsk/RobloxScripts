@@ -79,6 +79,7 @@ others:InfoLabel("t - u will see a noti on the user ur tracer is on")
 others:Section("Locks")
 
 getgenv().sakeybind = ""
+getgenv().alrpro = false
 
 others:Button("Silent Aim", function()
 local Settings = {
@@ -90,13 +91,9 @@ local Settings = {
         NOTIF = false,
         AUTOPRED = false,
         FOV = math.huge,
-        RESOVLER = false
+        RESOVLER = getgenv().alrpro
     }
 }
-
-while true do wait(1)
-getgenv().sakeybind
-end
 
 local SelectedPart = "LowerTorso"
 local Prediction = true
