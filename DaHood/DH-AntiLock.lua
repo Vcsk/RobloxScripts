@@ -81,10 +81,11 @@ others:Section("Locks")
 getgenv().sakeybind = ""
 getgenv().alrpro = false
 
-others:Button("Silent Aim", function()
+others:Toggle("Silent Aim", function(s)
+getgenv().silentaim = s
 local Settings = {
     rewrittenmain = {
-        Enabled = true,
+        Enabled = getgenv().silentaim,
         Key = getgenv().sakeybind,
         DOT = true,
         AIRSHOT = true,
@@ -377,11 +378,15 @@ others:TextBox("Keybind [Silent Aim]", function(keycode)
 getgenv().sakeybind = keycode
 end)
 
-others:Toggle("Anti Lock Resolver", function(s)
+others:Toggle("Anti Lock Resolver [Silent Aim]", function(s)
 getgenv().alrpro = s
+end)
+
+others:Toggle("Anti Lock Resolver", function(s)
+getgenv().alrproo = s
 local Y = -0
 game:GetService("RunService").RenderStepped:Connect(function()
-if alrpro == true then
+if alrproo == true then
     for i,v in pairs(game.Players:GetPlayers()) do
         Target = v.Name 
         if Target ~= game.Players.LocalPlayer.Name then
