@@ -93,7 +93,11 @@ local Settings = {
         RESOVLER = false
     }
 }
- 
+
+while true do wait(1)
+getgenv().sakeybind
+end
+
 local SelectedPart = "LowerTorso"
 local Prediction = true
 local PredictionValue = 0.12467245219812
