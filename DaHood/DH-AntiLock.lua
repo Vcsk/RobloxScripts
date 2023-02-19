@@ -569,6 +569,6 @@ others:Slider("CFrame Speed", 0,5, function(v)
 getgenv().Multiplier = v
 end)
 
-settings:Keybind("Toggle UI", function()
+settings:Keybind("Toggle UI", Enum.KeyCode.V, function()
 library:ToggleUI()
 end)
