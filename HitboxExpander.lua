@@ -50,7 +50,7 @@ local HomeTab = Window:Tab("Home","rbxassetid://10888331510")
 local PlayerTab = Window:Tab("Players","rbxassetid://12296135476")
 local VisualTab = Window:Tab("Visuals","rbxassetid://12308581351")
 
-HomeTab:Slider("Hitbox Size:", 0,500, function(value)
+HomeTab:TextBox("Hitbox Size:", function(value)
 	getgenv().HitboxSize = value
 end)
 
