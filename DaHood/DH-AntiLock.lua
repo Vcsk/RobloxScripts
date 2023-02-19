@@ -224,6 +224,13 @@ end)
 others:InfoLabel("l - enable tracer and disable")
 others:InfoLabel("t - u will see a noti on the user ur tracer is on")
 
+others:Button("Anti Aim Viewer", function()
+hookfunction(game.Players.LocalPlayer.IsInGroup, function() return true end)
+game:GetService("StarterGui"):SetCore("SendNotification", {Title = "bypassed group!", Text = "wrd", Duration = 4,});
+ 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nosssa/NossLock/main/AntiAimViewer"))()
+end)
+
 others:Section("Locks")
 
 others:Button("Silent Aim [Q]", function()
