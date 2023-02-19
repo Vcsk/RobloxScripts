@@ -3,6 +3,7 @@ local window = library:Create("DH - Anti Lock")
 
 local main = window:Tab("Main","rbxassetid://10888331510")
 local others = window:Tab("Others","rbxassetid://12518571678")
+local settings = window:Tab("Settings","rbxassetid://12535704100")
 
 main:Toggle("Underground", function(s)
 	-- Credits to Halal Gaming
@@ -566,4 +567,8 @@ end)
 
 others:Slider("CFrame Speed", 0,5, function(v)
 getgenv().Multiplier = v
+end)
+
+settings:Keybind("Toggle UI", function()
+library:ToggleUI()
 end)
