@@ -234,22 +234,29 @@ end)
 others:Section("Locks")
 
 others:Button("Silent Aim [Q]", function()
-local Settings = {
-    rewrittenmain = {
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKhonshu/intro2/main/ui2"))()
+local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKhonshu/intro/main/ui"))()
+NotifyLib.prompt('Q To Lock', 'Loading..', 5)
+NotifyLib.prompt('Sets Loaded', 'Son Them', 5)
+NotifyLib.prompt('HAHAHAHAHA', '😈', 5)
+ 
+ 
+        Settings = {
+        rewrittenmain = {
         Enabled = true,
         Key = "q",
         DOT = true,
         AIRSHOT = true,
-        NOTIF = false,
-        AUTOPRED = false,
+        NOTIF = true,
+        AUTOPRED = true,
         FOV = math.huge,
         RESOVLER = true
     }
 }
  
-local SelectedPart = "LowerTorso"
+local SelectedPart = "HumanoidRootPart"
 local Prediction = true
-local PredictionValue = 0.12467245219812
+local PredictionValue = 0.1357363
  
  
     local AnchorCount = 0
@@ -258,7 +265,7 @@ local PredictionValue = 0.12467245219812
     local CC = game:GetService"Workspace".CurrentCamera
     local Plr;
     local enabled = false
-    local accomidationfactor = 0.1234772452176
+    local accomidationfactor = 0.136
     local mouse = game.Players.LocalPlayer:GetMouse()
     local placemarker = Instance.new("Part", game.Workspace)
  
@@ -296,7 +303,7 @@ local PredictionValue = 0.12467245219812
     function noob(player)
         local character
         repeat wait() until player.Character
-        local handler = makemarker(guimain, player.Character:WaitForChild(SelectedPart), Color3.fromRGB(107, 184, 255), 0.3, 3)
+        local handler = makemarker(guimain, player.Character:WaitForChild(SelectedPart), Color3.fromRGB(105, 105, 105), 0.3, 3)
         handler.Name = player.Name
         player.CharacterAdded:connect(function(Char) handler.Adornee = Char:WaitForChild(SelectedPart) end)
  
@@ -327,9 +334,9 @@ local PredictionValue = 0.12467245219812
         else
         placemarker.Size = Vector3.new(0, 0, 0)
         end
-        placemarker.Transparency = 0.75
+        placemarker.Transparency = 0.50
         if Settings.rewrittenmain.DOT then
-        makemarker(placemarker, placemarker, Color3.fromRGB(232, 186, 200), 0.40, 0)
+        makemarker(placemarker, placemarker, Color3.fromRGB(105, 105, 105), 0.40, 0)
         end
     end)
  
@@ -339,24 +346,14 @@ local PredictionValue = 0.12467245219812
                 enabled = false
                 if Settings.rewrittenmain.NOTIF == true then
                     Plr = getClosestPlayerToCursor()
-                game.StarterGui:SetCore("SendNotification", {
-						Title = "6akan Locking Alert",
-						Text = "Unlocked",
-						Icon = "http://www.roblox.com/asset/?id=8850953349",
-						Duration = 1,
-})
+                NotifyLib.prompt('Lock', 'Unlocked', 5)
             end
             else
                 Plr = getClosestPlayerToCursor()
                 enabled = true
                 if Settings.rewrittenmain.NOTIF == true then
  
-                    game.StarterGui:SetCore("SendNotification", {
-						Title = "6akan Locking Alert",
-						Text = "Locked on : "..tostring(Plr.Name);
-						Icon = "http://www.roblox.com/asset/?id=8850953349",
-						Duration = 1,
-})
+                    NotifyLib.prompt('Lock', 'Target: '..tostring(Plr.Character.Humanoid.DisplayName), 5)
  
                 end
             end
