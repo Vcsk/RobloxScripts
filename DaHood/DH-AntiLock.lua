@@ -71,9 +71,9 @@ game.RunService.Heartbeat:Connect(function()
 end)
 
 wait(0.1)
-getgenv().Desync = false
+getgenv().Desync = s
 wait(0.1)
-getgenv().Desync1 = true
+getgenv().Desync1 = s
 
 game.RunService.Heartbeat:Connect(function()
     if getgenv().Desync1 then
