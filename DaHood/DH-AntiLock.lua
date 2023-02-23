@@ -36,172 +36,84 @@ main:Toggle("Sky", function(s)
 end)
 
 main:Toggle("Desync", function(s)
-	-- Credits to Halal Gaming
-	getgenv().Desync = s
-	
-	local lplr = game.Players.LocalPlayer
-	local run  = game:GetService("RunService")
-	
-	if getgenv().Desync == false then
-		if lplr.Character["I_LOADED_I"]["K.O"] then 
-			lplr.Character["I_LOADED_I"]["K.O"].Parent = nil 
-		end 
-		lplr.Character.Humanoid.Health = 0 
-	end 
-	
-	run.heartbeat:Connect(function()
-        if getgenv().Desync == true then 
-          local lvle = lplr.Character.HumanoidRootPart.Velocity
-          local lcf = lplr.Character.HumanoidRootPart.CFrame
-          lplr.Character.HumanoidRootPart.CFrame = lcf * CFrame.Angles(0,math.rad(1/100),0)
-          lplr.Character.HumanoidRootPart.Velocity = Vector3.new(1,1,1) * -(2^15)
-          run.RenderStepped:Wait()
-          lplr.Character.HumanoidRootPart.Velocity = lvle 
-        end 
-	end)
-end)
+-- execute more than once sometimes it glitches
+getgenv().Desync = s
 
-main:Toggle("Desync Resolver", function(s)
-getgenv().VelocityChanger = s
-getgenv().Velocity = Vector3.new(0,-500,0)
-
-local Players     = game:GetService("Players")
-local RunService  = game:GetService("RunService")
-
-local LocalPlayer = Players.LocalPlayer
-local Character   = LocalPlayer.Character
-local RootPart    = Character:FindFirstChild("HumanoidRootPart")
-
-local Heartbeat, RStepped, Stepped = RunService.Heartbeat, RunService.RenderStepped, RunService.Stepped
-
-LocalPlayer.CharacterAdded:Connect(function(NewCharacter)
-   Character = NewCharacter
-end)
-
-local RVelocity, YVelocity = nil, 0.1
-
-while true do
-   if VelocityChanger then
-       if (not RootPart) or (not RootPart.Parent) or (not RootPart.Parent.Parent) then
-           warn("weird ahh died")
-           RootPart = Character:FindFirstChild("HumanoidRootPart")
-       else
-           RVelocity = RootPart.Velocity
-   
-           RootPart.Velocity = type(Velocity) == "vector" and Velocity or Velocity(RVelocity)
-       
-           RStepped:wait()
-       
-           RootPart.Velocity = RVelocity
-       end
-   end
-   
-   Heartbeat:wait()
-end
-end)
-
-getgenv().odkey = ""
-main:Button("Oblivity Desync", function()
-local P1000ToggleKey = odkey -- Change that to whatever keybind: "t"
-
-
---[[
-
-	Standing still will trick the hitbox, you won't be able to get hit.
-
-
-	DO NOT EDIT BEYOND THIS POINT IF YOU DON'T UNDERSTAND WHAT IS GOING ON.
-	
-	ORIGINAL SOURCE PUT INTO SKID FRIENDLY FORMAT TAKE WHAT YOU LIKE AND MAKE MANY MORE OBLIVITIES CLONES WITH THIS OR EVEN YOUR VERY OWN DIY OBLIVITY!
-	
-	AND REMEMBER TO SAY, SO LOOOOONG OBLIVITYYYYYY!!!
-
-
---]]
-
-
---// Services
-checkcaller = checkcaller
-newcclosure = newcclosure
-hookmetamethod = hookmetamethod
-
-local PastedSources = false
-local BruhXD = game:GetService("RunService")
-local LocalPlayer = game:GetService("Players").LocalPlayer
-local Bullshit = LocalPlayer:GetMouse()
-
-
---// Toggles
-Bullshit.KeyDown:Connect(function(SayNoToOblivity)
-	if SayNoToOblivity == string.lower(P1000ToggleKey) then
-		pcall(function()
-			if PastedSources == false then
-				PastedSources = true
-				print("Enabled P1000")
-			elseif PastedSources == true then
-				PastedSources = false
-				print("Disabled P1000")
-			end
-		end)
-	end
-end)
-
-Bullshit.KeyDown:Connect(function(SayNoToOblivity)
-	if SayNoToOblivity == ("=") then
-		game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer) 
-	end
-end)
-
-
---// Desync_Source
-function RandomNumberRange(a)
-	return math.random(-a * 100, a * 100) / 100
+for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v:IsA("Script") and v.Name ~= "Health" and v.Name ~= "Sound" and v:FindFirstChild("LocalScript") then
+        v:Destroy()
+    end
 end
 
-function RandomVectorRange(a, b, c)
-	return Vector3.new(RandomNumberRange(a), RandomNumberRange(b), RandomNumberRange(c))
-end
-
-
-local DesyncTypes = {}
-BruhXD.Heartbeat:Connect(function()
-	if PastedSources == true then
-		DesyncTypes[1] = LocalPlayer.Character.HumanoidRootPart.CFrame
-		DesyncTypes[2] = LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity
-
-		local SpoofThis = LocalPlayer.Character.HumanoidRootPart.CFrame
-
-		SpoofThis = SpoofThis * CFrame.new(Vector3.new(0, 0, 0))
-		SpoofThis = SpoofThis * CFrame.Angles(math.rad(RandomNumberRange(180)), math.rad(RandomNumberRange(180)), math.rad(RandomNumberRange(180)))
-
-		LocalPlayer.Character.HumanoidRootPart.CFrame = SpoofThis
-
-		LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity = Vector3.new(1, 1, 1) * 16384
-
-		BruhXD.RenderStepped:Wait()
-
-		LocalPlayer.Character.HumanoidRootPart.CFrame = DesyncTypes[1]
-		LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity = DesyncTypes[2]
-	end
+game.Players.LocalPlayer.CharacterAdded:Connect(function(char)
+    repeat
+        wait()
+    until game.Players.LocalPlayer.Character
+    char.ChildAdded:Connect(function(child)
+        if child:IsA("Script") then 
+            wait(0.25)
+            if child:FindFirstChild("LocalScript") then
+                child.LocalScript:FireServer()
+            end
+        end
+    end)
 end)
 
+game.RunService.Heartbeat:Connect(function()
+    if Desync then
+        local CurrentVelocity = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0),0)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0.01),0)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(3000, 3000 ,3000)
+        game.RunService.RenderStepped:Wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = CurrentVelocity
+    end
+end)
 
---// Hook_CFrame
-local XDDDDDD = nil
-XDDDDDD = hookmetamethod(game, "__index", newcclosure(function(self, key)
-	if PastedSources == true then
-		if not checkcaller() then
-			if key == "CFrame" and PastedSources == true and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and LocalPlayer.Character:FindFirstChild("Humanoid") and LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0 then
-				if self == LocalPlayer.Character.HumanoidRootPart then
-					return DesyncTypes[1] or CFrame.new()
-				elseif self == LocalPlayer.Character.Head then
-					return DesyncTypes[1] and DesyncTypes[1] + Vector3.new(0, LocalPlayer.Character.HumanoidRootPart.Size / 2 + 0.5, 0) or CFrame.new()
-				end
-			end
-		end
-	end
-	return XDDDDDD(self, key)
-end))
+wait(0.1)
+getgenv().Desync = false
+wait(0.1)
+getgenv().Desync1 = true
+
+game.RunService.Heartbeat:Connect(function()
+    if getgenv().Desync1 then
+        local CurrentVelocity = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0),0)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0.01),0)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity = Vector3.new(math.random(3000),math.random(3000),math.random(3000))
+        game.RunService.RenderStepped:Wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = CurrentVelocity
+    end
+end)
+
+wait(0.5)
+
+game.RunService.Heartbeat:Connect(function()
+    if Desync then
+        local CurrentVelocity = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0),0)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0.01),0)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(3000, 3000 ,3000)
+        game.RunService.RenderStepped:Wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = CurrentVelocity
+    end
+end)
+
+wait(0.1)
+getgenv().Desync = false
+wait(0.1)
+getgenv().Desync1 = true
+
+game.RunService.Heartbeat:Connect(function()
+    if getgenv().Desync1 then
+        local CurrentVelocity = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0),0)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0,math.rad(0.01),0)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity = Vector3.new(math.random(3000),math.random(3000),math.random(3000))
+        game.RunService.RenderStepped:Wait()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = CurrentVelocity
+    end
+end)
 end)
 
 main:TextBox("Keybind [Oblivity Desync]", function(t)
