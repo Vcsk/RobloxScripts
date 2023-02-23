@@ -116,10 +116,6 @@ game.RunService.Heartbeat:Connect(function()
 end)
 end)
 
-main:TextBox("Keybind [Oblivity Desync]", function(t)
-getgenv().odkey = t
-end)
-
 others:Section("Aim Viewer")
 
 others:Button("Aim Viewer", function()
