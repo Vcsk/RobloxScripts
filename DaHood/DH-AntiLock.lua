@@ -35,9 +35,9 @@ main:Toggle("Sky", function(s)
 	end)
 end)
 
-main:Toggle("Desync (Sometimes glitches)", function(s)
+main:Button("Desync (execute more than once sometimes it glitches)", function()
 -- execute more than once sometimes it glitches
-getgenv().Desync = s
+getgenv().Desync = true
 
 for _, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
     if v:IsA("Script") and v.Name ~= "Health" and v.Name ~= "Sound" and v:FindFirstChild("LocalScript") then
@@ -71,9 +71,9 @@ game.RunService.Heartbeat:Connect(function()
 end)
 
 wait(0.1)
-getgenv().Desync = s
+getgenv().Desync = false
 wait(0.1)
-getgenv().Desync1 = s
+getgenv().Desync1 = true
 
 game.RunService.Heartbeat:Connect(function()
     if getgenv().Desync1 then
