@@ -35,7 +35,7 @@ main:Toggle("Sky", function(s)
 	end)
 end)
 
-main:Toggle("Desync", function(s)
+main:Toggle("Desync (Sometimes glitches)", function(s)
 -- execute more than once sometimes it glitches
 getgenv().Desync = s
 
