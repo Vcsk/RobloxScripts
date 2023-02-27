@@ -1,7 +1,7 @@
 --// Credits to the Owner
 
 if not game:IsLoaded() then
-game.Loaded:Wait()
+    game.Loaded:Wait()
 end
 
 
