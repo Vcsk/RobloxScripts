@@ -143,6 +143,9 @@ others:Section("Locks")
 
 others:Button("Q Tool", function()
 getgenv().keytoclick = "Q"
+if game.Players.LocalPlayer.Backpack:FindFirstChild(keytoclick) then
+    return
+end
 local tool = Instance.new("Tool")
 tool.RequiresHandle = false
 tool.Name = keytoclick
@@ -150,10 +153,6 @@ tool.Activated:connect(function()
     game:service("VirtualInputManager"):SendKeyEvent(true, keytoclick, false, game)
 end)
 tool.Parent = game.Players.LocalPlayer.Backpack
-wait(.5)
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKhonshu/intro2/main/ui2"))()
-local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/vKhonshu/intro/main/ui"))()
-NotifyLib.prompt('Q Tool', 'Loaded!', 5)
 end)
 
 others:Button("Silent Aim [Q]", function()
