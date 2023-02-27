@@ -111,23 +111,6 @@ Utility.dragify(MainUI,MainUI)
 
 MainUI.Tabs.Active = false
 
---Utility.dragify(MainUI.Tabs,MainUI)
-
-for i, v in pairs(MainUI.Tabs: GetDescendants ()) do
-    if not v.ClassName:match("UI") then
-        v.Active = false
-    end
-end
-
-for i, v in pairs(MainUI: GetDescendants ()) do
-    if not v.ClassName:match("UI") and not v.ClassName:match("Button") and not v.ClassName:match("TextBox") then
-        if v.Name ~= "Tabs" then
-            v.Active = false
-            Utility.dragify(v,MainUI)
-        end
-    end
-end
-
 Utility.dragify(ToggleBtn,ToggleBtn,true)
 
 for i, ToggleBtn in pairs(ToggleBtn: GetChildren ()) do
@@ -137,8 +120,6 @@ for i, ToggleBtn in pairs(ToggleBtn: GetChildren ()) do
 end
 
 ToggleBtn.Active = true
-
-MainUI.Tabs.Active = true
 
 function Alpha(number)
     ToggleBtn.Transparency = number
