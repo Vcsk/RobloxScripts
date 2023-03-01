@@ -37,7 +37,7 @@ Toggle.Size = UDim2.new(0.0650164187, 0, 0.0888099447, 0)
 Toggle.Font = Enum.Font.SourceSans
 Toggle.Text = "Toggle"
 Toggle.TextScaled = true
-Toggle.TextColor3 = Color3.fromRGB(128, 187, 219)
+Toggle.TextColor3 = Color3.fromRGB(40, 40, 40)
 Toggle.TextSize = 24.000
 Toggle.TextXAlignment = Enum.TextXAlignment.Left
 Toggle.Active = true
@@ -50,7 +50,11 @@ local HomeTab = Window:Tab("Home","rbxassetid://10888331510")
 local PlayerTab = Window:Tab("Players","rbxassetid://12296135476")
 local VisualTab = Window:Tab("Visuals","rbxassetid://12308581351")
 
-HomeTab:TextBox("Hitbox Size:", function(value)
+HomeTab:Slider("Hitbox Size (Slider)", 0,500, function(value)
+	getgenv().HitboxSize = value
+end)
+
+HomeTab:TextBox("Hitbox Size (TextBox)", function(value)
 	getgenv().HitboxSize = value
 end)
 
@@ -123,6 +127,10 @@ HomeTab:Toggle("Enemy Only", function(state)
 			end
 		end
 	end)
+end)
+
+HomeTab:Keybind("Toggle UI", Enum.KeyCode.V, function()
+    Library:ToggleUI()
 end)
 
 PlayerTab:Slider("WalkSpeed", 16,500, function(value)
