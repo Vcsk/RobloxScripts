@@ -1,5 +1,7 @@
 --// Credits to the Owner
 
+getgenv().notifyme2 = nil -- true/false
+
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
@@ -188,7 +190,7 @@ else
 	end)
 end
 
-if getgenv().notifyme == true then
+if getgenv().notifyme == true or getgenv().notifyme2 == true then
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Commands",
         Text = "/hf to hide Fluxus\n/sf to show Fluxus",
