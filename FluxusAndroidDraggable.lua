@@ -188,9 +188,12 @@ else
 	end)
 end
 
-
-game:GetService("StarterGui"):SetCore("SendNotification", {
-	Title = "Commands",
-	Text = "/hf to hide Fluxus\n/sf to show Fluxus",
-	Duration = 10
-})
+if getgenv().notifyme == true then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Commands",
+        Text = "/hf to hide Fluxus\n/sf to show Fluxus",
+        Duration = 10
+    })
+else
+    print("Commands\n/hf to hide Fluxus\n/sf to show Fluxus")
+end
