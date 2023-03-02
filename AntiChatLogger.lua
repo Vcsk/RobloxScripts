@@ -10,6 +10,8 @@
     11/11/2022 - Idk what happened but it stopped working... I fixed it though.
 ]]--
 
+getgenv().notifyme2 = nil -- true/false
+
 local ACL_LoadTime = tick()
 
 local ChatChanged = false
@@ -344,5 +346,5 @@ end)
 if OldSetting then
     StarterGui:SetCoreGuiEnabled(CoreGuiSettings[1], CoreGuiSettings[2])
 end
-Notify("🔹Anthony's ACL🔹", "Anti Chat and Screenshot Logger Loaded!", 15)
+if getgenv().notifyme == true or getgenv().notifyme2 == true then Notify("🔹Anthony's ACL🔹", "Anti Chat and Screenshot Logger Loaded!", 15) end
 print(string.format("Anti Chat-Logger has loaded in %s seconds.", tostring(tick() - ACL_LoadTime):sub(1, 4)))
