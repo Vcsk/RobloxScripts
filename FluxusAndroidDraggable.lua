@@ -1,5 +1,3 @@
---// Credits to the Owner
-
 getgenv().notifyme2 = nil -- true/false
 
 if not game:IsLoaded() then
