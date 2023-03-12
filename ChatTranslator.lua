@@ -3,6 +3,7 @@
     Made by Aim, updated by cli, Updated by rang#1234
     Credits to Riptxde for the sending chathook
 --]]
+syn = {request = request}
 pcall(function()
     if not game['Loaded'] then game['Loaded']:Wait() end; repeat wait(.06) until game:GetService('Players').LocalPlayer ~= nil
     local YourLang = "en" -- Language code that the messages are going to be translated to
@@ -23,7 +24,7 @@ pcall(function()
     local function got(url, Method, Body) -- Basic version of https://www.npmjs.com/package/got using synapse's request API for google websites
         Method = Method or "GET"
         
-        local res = request({
+        local res = syn.request({
             Url = url,
             Method = Method,
             Headers = {cookie="CONSENT=YES+"..googlev},
