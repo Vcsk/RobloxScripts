@@ -13,6 +13,9 @@ Credits to the Owner, Who Made The ESP Script
 local CoreGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
 
+getgenv().TeamCheck = nil
+getgenv().SitCheck = nil
+
 --// UI \\--
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source/MyUILib(Unamed).lua"))();
@@ -63,7 +66,7 @@ HomeTab:TextBox("Hitbox Transparency", function(number)
     end
 end)
 
-HomeTab:Toggle("Everyone", function(state)
+HomeTab:Toggle("Status:", function(state)
 	getgenv().HitboxStatus = state
     game:GetService('RunService').RenderStepped:connect(function()
 		if HitboxStatus == true then
@@ -75,6 +78,58 @@ HomeTab:Toggle("Everyone", function(state)
 						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
 						v.Character.HumanoidRootPart.Material = "Neon"
 						v.Character.HumanoidRootPart.CanCollide = false
+					end)
+				end
+			end
+		elseif HitboxStatus == true and TeamCheck == true then
+			for i,v in next, game:GetService('Players'):GetPlayers() do
+				if game:GetService('Players').LocalPlayer.Team ~= v.Team then
+					pcall(function()
+						v.Character.HumanoidRootPart.Size = Vector3.new(HitboxSize,HitboxSize,HitboxSize)
+						v.Character.HumanoidRootPart.Transparency = HitboxTransparency
+						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
+						v.Character.HumanoidRootPart.Material = "Neon"
+						v.Character.HumanoidRootPart.CanCollide = false
+					end)
+				end
+			end
+		elseif HitboxStatus == true and SitCheck == true then
+			for i,v in next, game:GetService('Players'):GetPlayers() do
+				if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+					pcall(function()
+						if v.Character.Humanoid:GetState() == Enum.HumanoidStateType.Seated then
+						    v.Character.HumanoidRootPart.Size = Vector3.new(2,2,1)
+						    v.Character.HumanoidRootPart.Transparency = 1
+						    v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Medium stone grey")
+						    v.Character.HumanoidRootPart.Material = "Plastic"
+						    v.Character.HumanoidRootPart.CanCollide = false
+						else
+						    v.Character.HumanoidRootPart.Size = Vector3.new(HitboxSize,HitboxSize,HitboxSize)
+						    v.Character.HumanoidRootPart.Transparency = HitboxTransparency
+						    v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
+						    v.Character.HumanoidRootPart.Material = "Neon"
+						    v.Character.HumanoidRootPart.CanCollide = false
+						end
+					end)
+				end
+			end
+		elseif HitboxStatus == true and TeamCheck == true and SitCheck == true then
+			for i,v in next, game:GetService('Players'):GetPlayers() do
+				if game:GetService('Players').LocalPlayer.Team ~= v.Team then
+					pcall(function()
+						if v.Character.Humanoid:GetState() == Enum.HumanoidStateType.Seated then
+						    v.Character.HumanoidRootPart.Size = Vector3.new(2,2,1)
+						    v.Character.HumanoidRootPart.Transparency = 1
+						    v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Medium stone grey")
+						    v.Character.HumanoidRootPart.Material = "Plastic"
+						    v.Character.HumanoidRootPart.CanCollide = false
+						else
+						    v.Character.HumanoidRootPart.Size = Vector3.new(HitboxSize,HitboxSize,HitboxSize)
+						    v.Character.HumanoidRootPart.Transparency = HitboxTransparency
+						    v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
+						    v.Character.HumanoidRootPart.Material = "Neon"
+						    v.Character.HumanoidRootPart.CanCollide = false
+						end
 					end)
 				end
 			end
@@ -94,35 +149,12 @@ HomeTab:Toggle("Everyone", function(state)
 	end)
 end)
 
-HomeTab:Toggle("Enemy Only", function(state)
+HomeTab:Toggle("Team Check", function(state)
     getgenv().TeamCheck = state
-    game:GetService('RunService').RenderStepped:connect(function()
-		if TeamCheck == true then
-			for i,v in next, game:GetService('Players'):GetPlayers() do
-				if game:GetService('Players').LocalPlayer.Team ~= v.Team then
-					pcall(function()
-						v.Character.HumanoidRootPart.Size = Vector3.new(HitboxSize,HitboxSize,HitboxSize)
-						v.Character.HumanoidRootPart.Transparency = HitboxTransparency
-						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
-						v.Character.HumanoidRootPart.Material = "Neon"
-						v.Character.HumanoidRootPart.CanCollide = false
-					end)
-				end
-			end
-		else
-		    for i,v in next, game:GetService('Players'):GetPlayers() do
-				if v.Name ~= game:GetService('Players').LocalPlayer.Name then
-					pcall(function()
-						v.Character.HumanoidRootPart.Size = Vector3.new(2,2,1)
-						v.Character.HumanoidRootPart.Transparency = 1
-						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Medium stone grey")
-						v.Character.HumanoidRootPart.Material = "Plastic"
-						v.Character.HumanoidRootPart.CanCollide = false
-					end)
-				end
-			end
-		end
-	end)
+end)
+
+HomeTab:Toggle("Sit Check", function(state)
+    getgenv().SitCheck = state
 end)
 
 HomeTab:Keybind("Toggle UI", Enum.KeyCode.F, function()
