@@ -18,18 +18,14 @@ local Players = game:GetService("Players")
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source/MyUILib(Unamed).lua"))();
 local Window = Library:Create("Hitbox Expander")
 
-if game:GetService("CoreGui"):FindFirstChild("ToggleGui_HE") then
-    game:GetService("CoreGui"):FindFirstChild("ToggleGui_HE"):Destroy()
-end
-
-local ToggleGui_Test = Instance.new("ScreenGui")
+local ToggleGui = Instance.new("ScreenGui")
 local Toggle = Instance.new("TextButton")
 
-ToggleGui_Test.Name = "ToggleGui_HE"
-ToggleGui_Test.Parent = game.CoreGui
+ToggleGui.Name = "ToggleGui_HE"
+ToggleGui.Parent = game.CoreGui
 
 Toggle.Name = "Toggle"
-Toggle.Parent = ToggleGui_Test
+Toggle.Parent = ToggleGui
 Toggle.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
 Toggle.BackgroundTransparency = 0.660
 Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
@@ -129,7 +125,7 @@ HomeTab:Toggle("Enemy Only", function(state)
 	end)
 end)
 
-HomeTab:Keybind("Toggle UI", Enum.KeyCode.V, function()
+HomeTab:Keybind("Toggle UI", Enum.KeyCode.F, function()
     Library:ToggleUI()
 end)
 
