@@ -13,9 +13,6 @@ Credits to the Owner, Who Made The ESP Script
 local CoreGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
 
-getgenv().TeamCheck = nil
-getgenv().SitCheck = nil
-
 --// UI \\--
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source/MyUILib(Unamed).lua"))();
@@ -66,7 +63,7 @@ HomeTab:TextBox("Hitbox Transparency", function(number)
     end
 end)
 
-HomeTab:Toggle("Status:", function(state)
+HomeTab:Toggle("Everyone", function(state)
 	getgenv().HitboxStatus = state
     game:GetService('RunService').RenderStepped:connect(function()
 		if HitboxStatus == true then
@@ -81,7 +78,26 @@ HomeTab:Toggle("Status:", function(state)
 					end)
 				end
 			end
-		elseif HitboxStatus == true and TeamCheck == true then
+		else
+		    for i,v in next, game:GetService('Players'):GetPlayers() do
+				if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+					pcall(function()
+						v.Character.HumanoidRootPart.Size = Vector3.new(2,2,1)
+						v.Character.HumanoidRootPart.Transparency = 1
+						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Medium stone grey")
+						v.Character.HumanoidRootPart.Material = "Plastic"
+						v.Character.HumanoidRootPart.CanCollide = false
+					end)
+				end
+			end
+		end
+	end)
+end)
+
+HomeTab:Toggle("Enemy Only", function(state)
+    getgenv().TeamCheck = state
+    game:GetService('RunService').RenderStepped:connect(function()
+		if TeamCheck == true then
 			for i,v in next, game:GetService('Players'):GetPlayers() do
 				if game:GetService('Players').LocalPlayer.Team ~= v.Team then
 					pcall(function()
@@ -93,7 +109,26 @@ HomeTab:Toggle("Status:", function(state)
 					end)
 				end
 			end
-		elseif HitboxStatus == true and SitCheck == true then
+		else
+		    for i,v in next, game:GetService('Players'):GetPlayers() do
+				if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+					pcall(function()
+						v.Character.HumanoidRootPart.Size = Vector3.new(2,2,1)
+						v.Character.HumanoidRootPart.Transparency = 1
+						v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Medium stone grey")
+						v.Character.HumanoidRootPart.Material = "Plastic"
+						v.Character.HumanoidRootPart.CanCollide = false
+					end)
+				end
+			end
+		end
+	end)
+end)
+
+HomeTab:Toggle("Sit Check (Not working)", function(state)
+	getgenv().SitCheck = state
+    game:GetService('RunService').RenderStepped:connect(function()
+		if SitCheck == true then
 			for i,v in next, game:GetService('Players'):GetPlayers() do
 				if v.Name ~= game:GetService('Players').LocalPlayer.Name then
 					pcall(function()
@@ -114,7 +149,7 @@ HomeTab:Toggle("Status:", function(state)
 					end)
 				end
 			end
-		elseif HitboxStatus == true and TeamCheck == true and SitCheck == true then
+		elseif SitCheck == true and TeamCheck == true then
 			for i,v in next, game:GetService('Players'):GetPlayers() do
 				if game:GetService('Players').LocalPlayer.Team ~= v.Team then
 					pcall(function()
@@ -149,14 +184,6 @@ HomeTab:Toggle("Status:", function(state)
 			end
 		end
 	end)
-end)
-
-HomeTab:Toggle("Team Check", function(state)
-    getgenv().TeamCheck = state
-end)
-
-HomeTab:Toggle("Sit Check", function(state)
-    getgenv().SitCheck = state
 end)
 
 HomeTab:Keybind("Toggle UI", Enum.KeyCode.F, function()
