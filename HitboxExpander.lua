@@ -103,6 +103,7 @@ HomeTab:Toggle("Status:", function(state)
 						    v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Medium stone grey")
 						    v.Character.HumanoidRootPart.Material = "Plastic"
 						    v.Character.HumanoidRootPart.CanCollide = false
+						    return
 						else
 						    v.Character.HumanoidRootPart.Size = Vector3.new(HitboxSize,HitboxSize,HitboxSize)
 						    v.Character.HumanoidRootPart.Transparency = HitboxTransparency
@@ -123,6 +124,7 @@ HomeTab:Toggle("Status:", function(state)
 						    v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Medium stone grey")
 						    v.Character.HumanoidRootPart.Material = "Plastic"
 						    v.Character.HumanoidRootPart.CanCollide = false
+						    return
 						else
 						    v.Character.HumanoidRootPart.Size = Vector3.new(HitboxSize,HitboxSize,HitboxSize)
 						    v.Character.HumanoidRootPart.Transparency = HitboxTransparency
