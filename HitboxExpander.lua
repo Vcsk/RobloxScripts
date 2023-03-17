@@ -56,11 +56,6 @@ end)
 
 HomeTab:TextBox("Hitbox Transparency", function(number)
     getgenv().HitboxTransparency = number
-    if HitboxTransparency == "y" then
-        getgenv().HitboxTransparency = 0.7
-    else
-        getgenv().HitboxTransparency = number
-    end
 end)
 
 HomeTab:Toggle("Everyone", function(state)
