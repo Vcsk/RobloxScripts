@@ -154,6 +154,28 @@ PlayerTab:Toggle("Loop WalkSpeed/JumpPower", function(state)
     end)
 end)
 
+PlayerTab:Toggle("Loop WalkSpeed", function(state)
+    getgenv().loopW = state
+    game:GetService("RunService").Heartbeat:Connect(function()
+        if loopW == true then
+            pcall(function()
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = Walkspeed
+            end)
+        end
+    end)
+end)
+
+PlayerTab:Toggle("Loop JumpPower", function(state)
+    getgenv().loopJ = state
+    game:GetService("RunService").Heartbeat:Connect(function()
+        if loopJ == true then
+            pcall(function()
+                game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = Jumppower
+            end)
+        end
+    end)
+end)
+
 PlayerTab:Toggle("Noclip", function(s)
     getgenv().Noclip = s
     game:GetService("RunService").Heartbeat:Connect(function()
