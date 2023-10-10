@@ -16,7 +16,6 @@ getgenv().HitboxTransparency = 0.7
 
 getgenv().HitboxStatus = false
 getgenv().TeamCheck = false
-getgenv().FriendCheck = false
 
 getgenv().Walkspeed = 16
 getgenv().Jumppower = 50
@@ -73,7 +72,7 @@ HomeTab:Section("Main")
 HomeTab:Toggle("Status: ", function(state)
 	getgenv().HitboxStatus = state
     game:GetService('RunService').RenderStepped:connect(function()
-		if HitboxStatus == true and TeamCheck == false and FriendCheck == false then
+		if HitboxStatus == true and TeamCheck == false then
 			for i,v in next, game:GetService('Players'):GetPlayers() do
 				if v.Name ~= game:GetService('Players').LocalPlayer.Name then
 					pcall(function()
@@ -85,21 +84,7 @@ HomeTab:Toggle("Status: ", function(state)
 					end)
 				end
 			end
-        elseif HitboxStatus == true and TeamCheck == false and FriendCheck == true then
-            for i,v in next, game:GetService('Players'):GetPlayers() do
-                for i2,v2 in pairs(game:GetService('Players'):GetChildren()) do
-                    if v.Name ~= game:GetService('Players').LocalPlayer.Name and not v2:IsFriendsWith(game:GetService('Players').LocalPlayer.UserId) then
-                        pcall(function()
-                            v.Character.HumanoidRootPart.Size = Vector3.new(HitboxSize, HitboxSize, HitboxSize)
-                            v.Character.HumanoidRootPart.Transparency = HitboxTransparency
-                            v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
-                            v.Character.HumanoidRootPart.Material = "Neon"
-                            v.Character.HumanoidRootPart.CanCollide = false
-                        end)
-                    end
-                end
-			end
-        elseif HitboxStatus == true and TeamCheck == true and FriendCheck == false then
+        elseif HitboxStatus == true and TeamCheck == true then
             for i,v in next, game:GetService('Players'):GetPlayers() do
 				if game:GetService('Players').LocalPlayer.Team ~= v.Team then
 					pcall(function()
