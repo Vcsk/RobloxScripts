@@ -147,7 +147,7 @@ mainTab:AddToggle({
 		if getgenv().settings.AutoObby == true and getgenv().ObbyReward == "2x Money" then
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(-327, 53, 1697)
 		elseif getgenv().settings.AutoObby == true and getgenv().ObbyReward == "2x Luck" then
-			player.Character.HumanoidRootPart.CFrame = CFrame.new(-318, 57, 1698)
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(-318, 53, 1698)
 		elseif getgenv().settings.AutoObby == true and getgenv().ObbyReward == "3x ProcessSpeed" then
 			player.Character.HumanoidRootPart.CFrame = CFrame.new(-309, 53, 1699)
 		end
