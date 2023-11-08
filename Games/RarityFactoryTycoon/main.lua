@@ -182,8 +182,8 @@ game:GetService("RunService").Heartbeat:Connect(function()
     if getgenv().settings.AutoObby == true or library.Flags["AutoObby"].Value == true and getgenv().ObbyReward == "2x Money" then
         for _, v in pairs(game.Workspace.Obby.RewardButtons.Money:GetDescendants()) do
             if v.Name == "Button" then
-                firetouchinterest(v.Parent, LocalPlr.Character.HumanoidRootPart, 0)
-                firetouchinterest(v.Parent, LocalPlr.Character.HumanoidRootPart, 1)
+                firetouchinterest(v.Parent, player.Character.HumanoidRootPart, 0)
+                firetouchinterest(v.Parent, player.Character.HumanoidRootPart, 1)
             end
         end
 	end
