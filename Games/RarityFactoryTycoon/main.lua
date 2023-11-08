@@ -180,13 +180,13 @@ end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
 	if getgenv().settings.AutoObby == true or library.Flags["AutoObby"].Value == true and getgenv().ObbyReward == "2x Money" then
-		plr.Character.HumanoidRootPart.CFrame = CFrame.new(-327, 57, 1699)
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(-327, 57, 1699)
 		wait(61.5)
 	elseif getgenv().settings.AutoObby == true or library.Flags["AutoObby"] == true and getgenv().ObbyReward == "2x Luck" then
-		plr.Character.HumanoidRootPart.CFrame = CFrame.new(-318, 57, 1698)
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(-318, 57, 1698)
 		wait(61.5)
 	elseif getgenv().settings.AutoObby == true or library.Flags["AutoObby"] == true and getgenv().ObbyReward == "3x ProcessSpeed" then
-		plr.Character.HumanoidRootPart.CFrame = CFrame.new(-309, 57, 1699)
+		player.Character.HumanoidRootPart.CFrame = CFrame.new(-309, 57, 1699)
 		wait(61.5)
 	end
 end)
