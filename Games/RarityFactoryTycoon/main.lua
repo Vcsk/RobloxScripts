@@ -184,6 +184,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
 			if v.Name == "Button" then
 				firetouchinterest(v.Parent, player.Character.HumanoidRootPart, 0)
 				firetouchinterest(v.Parent, player.Character.HumanoidRootPart, 1)
+				wait(62)
 			end
 		end
 	end
