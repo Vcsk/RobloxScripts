@@ -190,5 +190,6 @@ end)
 game:GetService("RunService").Heartbeat:Connect(function()
 	if getgenv().settings.AutoObby == true or library.Flags["AutoObby"].Value == true and getgenv().ObbyReward == "2x Money" then
 		ObbyRewardMoney()
+		wait(62)
 	end
 end)
