@@ -143,6 +143,16 @@ mainTab:AddToggle({
     Flag = "AutoObby",
     Callback = function(toggle)
         getgenv().settings.AutoObby = toggle
+	while getgenv().settings.AutoObby ~= false do
+		if getgenv().settings.AutoObby == true and getgenv().ObbyReward == "2x Money" then
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(-327, 53, 1698)
+		elseif getgenv().settings.AutoObby == true and getgenv().ObbyReward == "2x Luck" then
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(-318, 57, 1698)
+		elseif getgenv().settings.AutoObby == true and getgenv().ObbyReward == "3x ProcessSpeed" then
+			player.Character.HumanoidRootPart.CFrame = CFrame.new(-309, 57, 1699)
+		end
+		task.wait(61.5)
+	end
     end
 })
 
@@ -176,15 +186,4 @@ game:GetService("RunService").Heartbeat:Connect(function()
 	if getgenv().settings.AutoClaimGift == true or library.Flags["AutoClaimGift"].Value == true then
 	    AutoClaimGift()
 	end
-end)
-
-game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoObby == true or library.Flags["AutoObby"].Value == true and getgenv().ObbyReward == "2x Money" then
-		player.Character.HumanoidRootPart.CFrame = CFrame.new(-327, 57, 1699)
-	elseif getgenv().settings.AutoObby == true or library.Flags["AutoObby"] == true and getgenv().ObbyReward == "2x Luck" then
-		player.Character.HumanoidRootPart.CFrame = CFrame.new(-318, 57, 1698)
-	elseif getgenv().settings.AutoObby == true or library.Flags["AutoObby"] == true and getgenv().ObbyReward == "3x ProcessSpeed" then
-		player.Character.HumanoidRootPart.CFrame = CFrame.new(-309, 57, 1699)
-	end
-	task.wait(61.5)
 end)
