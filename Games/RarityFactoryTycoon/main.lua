@@ -67,6 +67,15 @@ function AutoClaimGift()
     game:GetService("ReplicatedStorage").Remotes.ClaimGift:FireServer(12)
 end
 
+function ObbyRewardMoney()
+for _, v in pairs(game.Workspace.Obby.RewardButtons.Money:GetDescendants()) do
+	if v.Name == "Button" then
+		firetouchinterest(v.Parent, player.Character.HumanoidRootPart, 0)
+		firetouchinterest(v.Parent, player.Character.HumanoidRootPart, 1)
+	end
+end
+end
+
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source/Orion.lua"))()
 local window = library:MakeWindow({Name = "Rarity Factory Tycoon", HidePremium = false, SaveConfig = true, ConfigFolder = "VX_RFT", IntroEnabled = false})
 
@@ -179,12 +188,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-    if getgenv().settings.AutoObby == true or library.Flags["AutoObby"].Value == true and getgenv().ObbyReward == "2x Money" then
-        for _, v in pairs(game.Workspace.Obby.RewardButtons.Money:GetDescendants()) do
-            if v.Name == "Button" then
-                firetouchinterest(v.Parent, player.Character.HumanoidRootPart, 0)
-                firetouchinterest(v.Parent, player.Character.HumanoidRootPart, 1)
-            end
-        end
+	if getgenv().settings.AutoObby == true or library.Flags["AutoObby"].Value == true and getgenv().ObbyReward == "2x Money" then
+		ObbyRewardMoney()
 	end
 end)
