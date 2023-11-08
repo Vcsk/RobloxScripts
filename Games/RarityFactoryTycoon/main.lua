@@ -1,4 +1,3 @@
-print("beta")
 getgenv().settings = {
 	AutoCollectOrbs = false,
 	AutoSell = false,
