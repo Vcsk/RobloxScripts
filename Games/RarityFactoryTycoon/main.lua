@@ -1,5 +1,6 @@
 getgenv().settings = {
 	AutoCollectOrbs = false,
+	AutoCollectTreeOrbs = false,
 	AutoSell = false,
 	AutoBuy = false,
 	AutoRebirth = false,
@@ -19,6 +20,14 @@ end
 
 function AutoCollectOrbs()
     for _, v in pairs(pTycoon.Drops:GetDescendants()) do
+        if v.ClassName == "Part" then 
+            v.CFrame = player.Character.Pickup.CFrame
+        end
+    end
+end
+
+function AutoCollectTreeOrbs()
+    for _, v in pairs(pTycoon.RebirthTree.Drops:GetDescendants()) do
         if v.ClassName == "Part" then 
             v.CFrame = player.Character.Pickup.CFrame
         end
@@ -79,18 +88,22 @@ local mainTab = window:MakeTab({
 mainTab:AddToggle({
     Name = "Auto Collect Orbs",
     Default = false,
-    Save = true,
-    Flag = "AutoCollectOrbs",
     Callback = function(toggle)
         getgenv().settings.AutoCollectOrbs = toggle
     end
 })
 
 mainTab:AddToggle({
+    Name = "Auto Collect Tree Orbs",
+    Default = false,
+    Callback = function(toggle)
+        getgenv().settings.AutoCollectTreeOrbs = toggle
+    end
+})
+
+mainTab:AddToggle({
     Name = "Auto Sell",
     Default = false,
-    Save = true,
-    Flag = "AutoSell",
     Callback = function(toggle)
         getgenv().settings.AutoSell = toggle
     end
@@ -99,8 +112,6 @@ mainTab:AddToggle({
 mainTab:AddToggle({
     Name = "Auto Buy",
     Default = false,
-    Save = true,
-    Flag = "AutoBuy",
     Callback = function(toggle)
         getgenv().settings.AutoBuy = toggle
     end
@@ -109,8 +120,6 @@ mainTab:AddToggle({
 mainTab:AddToggle({
     Name = "Auto Rebirth",
     Default = false,
-    Save = true,
-    Flag = "AutoRebirth",
     Callback = function(toggle)
         getgenv().settings.AutoRebirth = toggle
     end
@@ -119,8 +128,6 @@ mainTab:AddToggle({
 mainTab:AddToggle({
     Name = "Auto Claim Gift",
     Default = false,
-    Save = true,
-    Flag = "AutoClaimGift",
     Callback = function(toggle)
         getgenv().settings.AutoClaimGift = toggle
     end
@@ -159,31 +166,37 @@ mainTab:AddToggle({
 --// Main Codes
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoCollectOrbs == true or library.Flags["AutoCollectOrbs"].Value == true then
+	if getgenv().settings.AutoCollectOrbs == true then
 	    AutoCollectOrbs()
 	end
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoSell == true or library.Flags["AutoSell"].Value == true then
+	if getgenv().settings.AutoCollectTreeOrbs == true then
+	    AutoCollectTreeOrbs()
+	end
+end)
+
+game:GetService("RunService").Heartbeat:Connect(function()
+	if getgenv().settings.AutoSell == true then
 	    AutoSell()
 	end
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoBuy == true or library.Flags["AutoBuy"].Value == true then
+	if getgenv().settings.AutoBuy == true then
 	    AutoBuy()
 	end
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoRebirth == true or library.Flags["AutoRebirth"].Value == true then
+	if getgenv().settings.AutoRebirth == true then
 	    AutoRebirth()
 	end
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoClaimGift == true or library.Flags["AutoClaimGift"].Value == true then
+	if getgenv().settings.AutoClaimGift == true then
 	    AutoClaimGift()
 	end
 end)
