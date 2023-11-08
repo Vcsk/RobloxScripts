@@ -130,7 +130,7 @@ getgenv().ObbyReward = ""
 mainTab:AddDropdown({
 	Name = "Obby Reward",
 	Default = "2x Money",
-	Options = {"2x ProcessSpeed", "2x Luck", "2x Money"},
+	Options = {"3x ProcessSpeed", "2x Luck", "2x Money"},
 	Callback = function(selected)
 		getgenv().ObbyReward = selected
 	end    
@@ -180,12 +180,13 @@ end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
 	if getgenv().settings.AutoObby == true or library.Flags["AutoObby"].Value == true and getgenv().ObbyReward == "2x Money" then
-		for _, v in pairs(game.Workspace.Obby.RewardButtons.Money:GetDescendants()) do
-			if v.Name == "Button" then
-				firetouchinterest(v.Parent, player.Character.HumanoidRootPart, 0)
-				firetouchinterest(v.Parent, player.Character.HumanoidRootPart, 1)
-				wait(62)
-			end
-		end
+		plr.Character.HumanoidRootPart.CFrame = CFrame.new(-327, 57, 1699)
+		wait(61.5)
+	elseif getgenv().settings.AutoObby == true or library.Flags["AutoObby"] == true and getgenv().ObbyReward == "2x Luck" then
+		plr.Character.HumanoidRootPart.CFrame = CFrame.new(-318, 57, 1698)
+		wait(61.5)
+	elseif getgenv().settings.AutoObby == true or library.Flags["AutoObby"] == true and getgenv().ObbyReward == "3x ProcessSpeed" then
+		plr.Character.HumanoidRootPart.CFrame = CFrame.new(-309, 57, 1699)
+		wait(61.5)
 	end
 end)
