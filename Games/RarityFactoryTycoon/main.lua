@@ -200,3 +200,5 @@ game:GetService("RunService").Heartbeat:Connect(function()
 	    AutoClaimGift()
 	end
 end)
+
+OrionLib:Init()
