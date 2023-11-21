@@ -55,10 +55,6 @@ local VisualTab = Window:Tab("Visuals","rbxassetid://12308581351")
 
 HomeTab:Section("Settings")
 
-HomeTab:Slider("Hitbox Size (Slider)", 0,300, function(value)
-    getgenv().HitboxSize = value
-end)
-
 HomeTab:TextBox("Hitbox Size (TextBox)", function(value)
     getgenv().HitboxSize = value
 end)
