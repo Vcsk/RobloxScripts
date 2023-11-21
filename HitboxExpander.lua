@@ -55,7 +55,7 @@ local VisualTab = Window:Tab("Visuals","rbxassetid://12308581351")
 
 HomeTab:Section("Settings")
 
-HomeTab:TextBox("Hitbox Size (TextBox)", function(value)
+HomeTab:TextBox("Hitbox Size", function(value)
     getgenv().HitboxSize = value
 end)
 
@@ -104,7 +104,7 @@ HomeTab:Keybind("Toggle UI", Enum.KeyCode.F, function()
     Library:ToggleUI()
 end)
 
-PlayerTab:Slider("WalkSpeed", 16,500, function(value)
+PlayerTab:TextBox("WalkSpeed", function(value)
     getgenv().Walkspeed = value
     pcall(function()
         game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = value
@@ -122,7 +122,7 @@ PlayerTab:Toggle("Loop WalkSpeed", function(state)
     end)
 end)
 
-PlayerTab:Slider("JumpPower", 50,1000, function(value)
+PlayerTab:TextBox("JumpPower", function(value)
     getgenv().Jumppower = value
     pcall(function()
         game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = value
