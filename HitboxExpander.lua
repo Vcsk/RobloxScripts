@@ -52,7 +52,6 @@ end)
 local HomeTab = Window:Tab("Home","rbxassetid://10888331510")
 local PlayerTab = Window:Tab("Players","rbxassetid://12296135476")
 local VisualTab = Window:Tab("Visuals","rbxassetid://12308581351")
-local GamesTab = Window:Tab("Games","rbxassetid://15420673849")
 
 HomeTab:Section("Settings")
 
@@ -198,7 +197,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/ma
 end)
 
 if game.PlaceId == 3082002798 then
-    GamesTab:Section("Supported")
+    local GamesTab = Window:Tab("Games")
 	GamesTab:Button("No Cooldown", function()
 	    for i, v in pairs(game:GetService('ReplicatedStorage')['Shared_Modules'].Tools:GetDescendants()) do
 		    if v:IsA('ModuleScript') then
@@ -207,6 +206,4 @@ if game.PlaceId == 3082002798 then
 			end
 		end
 	end)
-else
-    GamesTab:Section("Not Supported")
 end
