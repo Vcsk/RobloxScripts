@@ -60,7 +60,7 @@ if game.PlaceId == 6403373529 or game
         
     local Credits = Coasting:CreateTab("Credits")
     local Credits1 = Credits:CreateSection("Coding")
-    local Credits2 = Credits:CreateSection("I D K")
+    local Credits2 = Credits:CreateSection("Discord")
     
     local spamBob = Farms2:CreateToggle("Bob Farm", function(bool)
         autoBob = bool
@@ -251,7 +251,7 @@ if game.PlaceId == 6403373529 or game
          end
     end)
     
-    local killAura = Combat1:CreateToggle("Slap Aura", function(bool)
+    local killAura = Combat1:CreateToggle("Slap Aura [KICK RISK]", function(bool)
         slapAura = bool
             if bool == true then
                 while slapAura do
