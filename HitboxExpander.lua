@@ -12,7 +12,7 @@ local CoreGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
 
 getgenv().HitboxSize = 15
-getgenv().HitboxTransparency = 0.7
+getgenv().HitboxTransparency = 0.9
 
 getgenv().HitboxStatus = false
 getgenv().TeamCheck = false
@@ -152,7 +152,7 @@ PlayerTab:Toggle("Loop JumpPower", function(state)
     end)
 end)
 
-PlayerTab:Slider("Fov", 70,120, function(v)
+PlayerTab:Slider("Fov", game.Workspace.CurrentCamera.FieldOfView,120, function(v)
      game.Workspace.CurrentCamera.FieldOfView = v
 end)
 
