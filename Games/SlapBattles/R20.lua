@@ -48,7 +48,7 @@ Toggle.TextXAlignment = Enum.TextXAlignment.Left
 Toggle.Active = true
 Toggle.Draggable = true
 Toggle.MouseButton1Click:connect(function()
-	Library:ToggleUI()
+	Coasting:ToggleUI()
 end)
 
     local function getGlove()
