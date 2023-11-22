@@ -25,7 +25,7 @@ if game.PlaceId == 6403373529 or game
 
     local Gloves = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Files/Gloves.lua"))()
     local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Files/Functions.lua"))()
-    local Coasting = loadstring(game:HttpGet(("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source(2)/Coasting.lua"))()
+    local Coasting = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source(2)/Coasting.lua"))()
 
 local ToggleGui = Instance.new("ScreenGui")
 local Toggle = Instance.new("TextButton")
