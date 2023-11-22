@@ -208,3 +208,16 @@ getgenv().outlinetrans = 0.5 --Change outline transparency
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/Highlight-ESP.lua"))()
 end)
+
+if game.PlaceId == 3082002798 then
+    local GamesTab = Window:Tab("Games","rbxassetid://15426471035")
+	GamesTab:InfoLabel("Game: "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
+	GamesTab:Button("No Cooldown", function()
+	    for i, v in pairs(game:GetService('ReplicatedStorage')['Shared_Modules'].Tools:GetDescendants()) do
+		    if v:IsA('ModuleScript') then
+			    local Module = require(v)
+				Module.DEBOUNCE = 0
+			end
+		end
+	end)
+end
