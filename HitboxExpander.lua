@@ -181,7 +181,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/ma
 end)
 
 if game.PlaceId == 3082002798 then
-    local GamesTab = Window:Tab("Games")
+    local GamesTab = Window:Tab("Games","rbxassetid://15426471035")
 	GamesTab:Button("No Cooldown", function()
 	    for i, v in pairs(game:GetService('ReplicatedStorage')['Shared_Modules'].Tools:GetDescendants()) do
 		    if v:IsA('ModuleScript') then
