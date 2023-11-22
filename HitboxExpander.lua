@@ -4,7 +4,7 @@ Open source
 Made by !vcsk0#1516
 Credits to me
 
-Credits to the Owner, Who Made The ESP Script
+Credits to the Owner Who Made The ESP Script
 
 ]]
 
