@@ -25,7 +25,31 @@ if game.PlaceId == 6403373529 or game
 
     local Gloves = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Files/Gloves.lua"))()
     local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/cheesynob39/R2O/main/Files/Functions.lua"))()
-    local Coasting = loadstring(game:HttpGet(("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source(2)/Coasting.lua")))()
+    local Coasting = loadstring(game:HttpGet(("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source(2)/Coasting.lua"))()
+
+local ToggleGui = Instance.new("ScreenGui")
+local Toggle = Instance.new("TextButton")
+
+ToggleGui.Name = math.random(486572)
+ToggleGui.Parent = game.CoreGui
+
+Toggle.Name = "Toggle"
+Toggle.Parent = ToggleGui
+Toggle.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
+Toggle.BackgroundTransparency = 0.660
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+Toggle.Size = UDim2.new(0.0650164187, 0, 0.0888099447, 0)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "Toggle"
+Toggle.TextScaled = true
+Toggle.TextColor3 = Color3.fromRGB(127, 0, 255)
+Toggle.TextSize = 24.000
+Toggle.TextXAlignment = Enum.TextXAlignment.Left
+Toggle.Active = true
+Toggle.Draggable = true
+Toggle.MouseButton1Click:connect(function()
+	Library:ToggleUI()
+end)
 
     local function getGlove()
         return game.Players.LocalPlayer.leaderstats.Glove.Value
