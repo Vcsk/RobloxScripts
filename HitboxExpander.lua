@@ -53,6 +53,8 @@ local HomeTab = Window:Tab("Home","rbxassetid://10888331510")
 local PlayerTab = Window:Tab("Players","rbxassetid://12296135476")
 local VisualTab = Window:Tab("Visuals","rbxassetid://12308581351")
 
+HomeTab:InfoLabel("only works on some games!")
+
 HomeTab:Section("Settings")
 
 HomeTab:TextBox("Hitbox Size", function(value)
