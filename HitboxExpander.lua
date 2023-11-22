@@ -180,6 +180,8 @@ PlayerTab:Button("Rejoin", function()
     game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
 end)
 
+VisualTab:Info("Wait 3-10 seconds")
+
 VisualTab:Toggle("Character Highlight", function(state)
 getgenv().enabled = state --Toggle on/off
 getgenv().filluseteamcolor = true --Toggle fill color using player team color on/off
@@ -194,6 +196,7 @@ end)
 
 if game.PlaceId == 3082002798 then
     local GamesTab = Window:Tab("Games","rbxassetid://15426471035")
+	GamesTab:Info("Game: "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
 	GamesTab:Button("No Cooldown", function()
 	    for i, v in pairs(game:GetService('ReplicatedStorage')['Shared_Modules'].Tools:GetDescendants()) do
 		    if v:IsA('ModuleScript') then
