@@ -1,5 +1,6 @@
 getgenv().settings = {
-    AutoWork = false,
+    AutoTap = false,
+	AutoWork = false,
     AutoCollectWork = false,
 }
 
@@ -17,7 +18,7 @@ local mainTab = window:MakeTab({
     PremiumOnly = false
 })
 
-homeTab:AddParagraph("Info","[BETA] - UPDATE 1: [Added Auto Work, Added Auto Collect Work]")
+homeTab:AddParagraph("UPDATES","[BETA] - UPDATE 1: [Added Auto Work, Added Auto Collect Work] - UPDATE 2 [Added Auto Tap]")
 
 homeTab:AddButton({
     Name = "Discord Invite",
@@ -30,6 +31,14 @@ homeTab:AddButton({
                   Time = 5
               })
       end
+})
+
+mainTab:AddToggle({
+    Name = "Auto Tap",
+    Default = false,
+    Callback = function(toggle)
+        getgenv().settings.AutoTap = toggle
+    end
 })
 
 mainTab:AddToggle({
@@ -49,6 +58,12 @@ mainTab:AddToggle({
 })
 
 --// Main Codes
+
+game:GetService("RunService").Heartbeat:Connect(function()
+    if getgenv().settings.AutoTap == true then
+        game:GetService("Players").LocalPlayer.PlayerGui.TapTapGameplay.TapServer.ServerEvent:FireServer()
+    end
+end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
     if getgenv().settings.AutoWork == true then
