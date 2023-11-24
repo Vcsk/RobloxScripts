@@ -18,7 +18,7 @@ local mainTab = window:MakeTab({
     PremiumOnly = false
 })
 
-homeTab:AddParagraph("UPDATES","[BETA] - UPDATE 1: [Added Auto Work, Added Auto Collect Work] - UPDATE 2 [Added Auto Tap]")
+homeTab:AddParagraph("UPDATES","UPDATE 1: [Added Auto Work, Added Auto Collect Work]/nUPDATE 2 [Added Auto Tap]")
 
 homeTab:AddButton({
     Name = "Discord Invite",
