@@ -86,8 +86,8 @@ local function AutoClaimGift()
     game:GetService("ReplicatedStorage").Remotes.ClaimGift:FireServer(12)
 end
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source/Orion.lua"))()
-local window = library:MakeWindow({Name = "Rarity Factory Tycoon", HidePremium = false, SaveConfig = true, ConfigFolder = "VX_RFT", IntroEnabled = true, IntroText = "Made by vcsk0"})
+local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/UI-Library/main/Source/Orion.lua"))()
+local window = OrionLib:MakeWindow({Name = "Rarity Factory Tycoon", HidePremium = false, SaveConfig = true, ConfigFolder = "VX_RFT", IntroEnabled = true, IntroText = "Made by vcsk0"})
 
 local homeTab = window:MakeTab({
     Name = "Home",
@@ -321,4 +321,4 @@ end)
 
 --// end
 
-library:Init()
+OrionLib:Init()
