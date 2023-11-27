@@ -270,7 +270,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoClaimGift == true OrionLib.Flags["AutoLoadSave"].Value == false then
+	if getgenv().settings.AutoClaimGift == true and OrionLib.Flags["AutoLoadSave"].Value == false then
 	    AutoClaimGift()
 	end
 end)
