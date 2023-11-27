@@ -275,7 +275,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
 	end
 end)
 
---// Saves
+--[[ Saves
 
 game:GetService("RunService").Heartbeat:Connect(function()
     if OrionLib.Flags["AutoLoadSave"].Value == true and OrionLib.Flags["AutoCollectOrbs"].Value == true then
@@ -318,7 +318,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
         AutoClaimGift()
     end
 end)
-
+--]]
 --// end
 
 OrionLib:Init()
