@@ -234,48 +234,48 @@ settingsTab:AddToggle({
 --// Main Codes
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoCollectOrbs == true then
+	if getgenv().settings.AutoCollectOrbs == true and OrionLib.Flags["AutoLoadSave"].Value == false then
 	    AutoCollectOrbs()
 	end
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoCollectDiamonds == true then
+	if getgenv().settings.AutoCollectDiamonds == true and OrionLib.Flags["AutoLoadSave"].Value false then
 	    AutoCollectDiamonds()
 	end
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoCollectTreeOrbs == true then
+	if getgenv().settings.AutoCollectTreeOrbs == true and OrionLib.Flags["AutoLoadSave"].Value == false then
 	    AutoCollectTreeOrbs()
 	end
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoSell == true then
+	if getgenv().settings.AutoSell == true and OrionLib.Flags["AutoLoadSave"].Value == false then
 	    AutoSell()
 	end
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoBuy == true then
+	if getgenv().settings.AutoBuy == true and OrionLib.Flags["AutoLoadSave"].Value == false then
 	    AutoBuy()
 	end
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoRebirth == true then
+	if getgenv().settings.AutoRebirth == true and OrionLib.Flags["AutoLoadSave"].Value == false then
 	    AutoRebirth()
 	end
 end)
 
 game:GetService("RunService").Heartbeat:Connect(function()
-	if getgenv().settings.AutoClaimGift == true then
+	if getgenv().settings.AutoClaimGift == true OrionLib.Flags["AutoLoadSave"].Value == false then
 	    AutoClaimGift()
 	end
 end)
 
---[[ Saves
+--// Saves
 
 game:GetService("RunService").Heartbeat:Connect(function()
     if OrionLib.Flags["AutoLoadSave"].Value == true and OrionLib.Flags["AutoCollectOrbs"].Value == true then
@@ -318,7 +318,7 @@ game:GetService("RunService").Heartbeat:Connect(function()
         AutoClaimGift()
     end
 end)
---]]
+
 --// end
 
 OrionLib:Init()
