@@ -322,3 +322,5 @@ end)
 --// end
 
 OrionLib:Init()
+
+print(getgenv().settings.AutoCollectOrbs)
