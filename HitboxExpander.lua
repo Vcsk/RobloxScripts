@@ -169,7 +169,6 @@ end)
 
 PlayerTab:Toggle("TP Walk", function(s)
 getgenv().TPWalk = s
-local tspeed = 3
 local hb = game:GetService("RunService").Heartbeat
 local player = game:GetService("Players")
 local lplr = player.LocalPlayer
@@ -177,8 +176,8 @@ local chr = lplr.Character
 local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
 while getgenv().TPWalk and hb:Wait() and chr and hum and hum.Parent do
   if hum.MoveDirection.Magnitude > 0 then
-    if tspeed and isNumber(tspeed) then
-      chr:TranslateBy(hum.MoveDirection * tonumber(tspeed))
+    if tspeed and isNumber(getgenv().TPSpeed) then
+      chr:TranslateBy(hum.MoveDirection * tonumber(getgenv().TPSpeed))
     else
       chr:TranslateBy(hum.MoveDirection)
     end
