@@ -11,14 +11,23 @@ Credits to the Owner Who Made The ESP Script
 local CoreGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
 
+local function isNumber(str)
+  if tonumber(str) ~= nil or str == 'inf' then
+    return true
+  end
+end
+
 getgenv().HitboxSize = 15
 getgenv().HitboxTransparency = 0.9
 
 getgenv().HitboxStatus = false
 getgenv().TeamCheck = false
 
-getgenv().Walkspeed = 16
-getgenv().Jumppower = 50
+getgenv().Walkspeed = game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed
+getgenv().Jumppower = game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower
+
+getgenv().TPSpeed = 3
+getgenv().TPWalk = false
 
 --// UI
 
@@ -152,6 +161,29 @@ PlayerTab:Toggle("Loop JumpPower", function(state)
             end)
         end
     end)
+end)
+
+PlayerTab:TextBox("TP Speed", function(value)
+getgenv().TPSpeed = value
+end)
+
+PlayerTab:Toggle("TP Walk", function(s)
+getgenv().TPWalk = s
+local tspeed = 3
+local hb = game:GetService("RunService").Heartbeat
+local player = game:GetService("Players")
+local lplr = player.LocalPlayer
+local chr = lplr.Character
+local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+while getgenv().TPWalk and hb:Wait() and chr and hum and hum.Parent do
+  if hum.MoveDirection.Magnitude > 0 then
+    if tspeed and isNumber(tspeed) then
+      chr:TranslateBy(hum.MoveDirection * tonumber(tspeed))
+    else
+      chr:TranslateBy(hum.MoveDirection)
+    end
+  end
+end
 end)
 
 PlayerTab:Slider("Fov", game.Workspace.CurrentCamera.FieldOfView,120, function(v)
