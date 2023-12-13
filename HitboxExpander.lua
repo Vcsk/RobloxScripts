@@ -176,7 +176,7 @@ local chr = lplr.Character
 local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
 while getgenv().TPWalk and hb:Wait() and chr and hum and hum.Parent do
   if hum.MoveDirection.Magnitude > 0 then
-    if tspeed and isNumber(getgenv().TPSpeed) then
+    if getgenv().TPSpeed and isNumber(getgenv().TPSpeed) then
       chr:TranslateBy(hum.MoveDirection * tonumber(getgenv().TPSpeed))
     else
       chr:TranslateBy(hum.MoveDirection)
